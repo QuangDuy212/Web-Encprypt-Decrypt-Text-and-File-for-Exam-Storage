@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Trang mã hóa/ giải mã </title>
+</head>
+<link rel="stylesheet" href="style.css">
+
+<body>
+	<div class="header">
+		<div class="header__title">
+			<span>
+				Trang giải mã , mã hóa cho lưu trữ đề thi
+			</span>
+		</div>
+		<div class="header__btn">
+			<button id="btnRefresh" onClick="javascript:location.reload();">
+				Refresh Page
+			</button>
+			<button id="btnDivEncrypt" onClick="javascript:switchdiv('encrypt');">Mã hóa 1 file</button>
+			<button id="btnDivDecrypt" onClick="javascript:switchdiv('decrypt');">Giải mã 1
+				file</button>
+			<button id="btnDivEncrypt" onClick="javascript:switchdiv('encrypt');">Mã hóa đoạn
+				text</button>
+			<button id="btnDivDecrypt" onClick="javascript:switchdiv('decrypt');">Giải mã đoạn
+				text</button>
+		</div>
+	</div>
+	<!-- <div class=container>
+		<div class="divTablefullwidth">
+			<div class="divTableBody">
+				<div class="divTableRow">
+					<div class="divTableCell">
+						<h1>Trang mã hóa, giải mã</h1>
+						<h4>Giúp mã hóa, giải mã đề thi</h4>
+					</div>
+					<div class="divTableCell">
+						<h1>
+							<button id="btnRefresh" onClick="javascript:location.reload();">
+								Refresh Page
+							</button>
+							<button id="btnDivEncrypt" onClick="javascript:switchdiv('encrypt');">Mã hóa 1 file</button>
+							<button id="btnDivDecrypt" onClick="javascript:switchdiv('decrypt');">Giải mã 1
+								file</button>
+							<button id="btnDivEncrypt" onClick="javascript:switchdiv('encrypt');">Mã hóa đoạn
+								text</button>
+							<button id="btnDivDecrypt" onClick="javascript:switchdiv('decrypt');">Giải mã đoạn
+								text</button>
+						</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> -->
+
+
+	<div class=container>
+		<hr>
+	</div>
+
+	<!-- <div class="container" id=divEncryptfile>
+		<div class="encryptDiv">
+			<h2>Mã hóa 1 file</h2>
+			<p>Để mã hóa 1 file, bạn phải nhập password và kéo file vào vùng. Sau đó lưu file đã mã hóa.</p>
+
+			<div class="divTable">
+				<div class="divTableBody">
+					<div class="divTableRow">
+						<div class="divTableCell">Mật khẩu</div>
+						<div class="divTableCell"><input id=txtEncpassphrase type=password size=30
+								onkeyup=javascript:encvalidate(); value=''></div>
+						<div class="divTableCell">(Ít nhất 8 kí tự. Mật khẩu sẽ ok!)</div>
+					</div>
+					<div class="divTableRow">
+						<div class="divTableCell">Xác nhận</div>
+						<div class="divTableCell"><input id=txtEncpassphraseretype type=password size=30
+								onkeyup=javascript:encvalidate(); value=''></div>
+						<div class="divTableCell"><span class=greenspan id=spnCheckretype></span></div>
+					</div>
+				</div>
+			</div>
+
+			<p> </p>
+
+			<div class="inputEncrypt">
+				<div class=dropzone id="encdropzone" ondrop="drop_handler(event);" ondragover="dragover_handler(event);"
+					ondragend="dragend_handler(event);">
+					<p>Drag and drop the file to be encrypted into this dropzone, or click <a
+							onclick=javascript:encfileElem.click();>here</a> to select file.</p>
+					<p><span id=spnencfilename></span></p>
+				</div>
+				<input type="file" id="encfileElem" style="display:none" onchange="selectfile(this.files)">
+			</div>
+
+			<p> </p>
+
+			<div class="divTable">
+				<div class="divTableBody">
+					<div class="divTableRow">
+						<div class="divTableCell"><button id=btnEncrypt onclick=javascript:encryptfile(); disabled>Mã
+								hóa</button></div>
+						<div class="divTableCell"><span id=spnEncstatus></span></div>
+					</div>
+				</div>
+			</div>
+
+			<p> </p>
+
+			<div>
+				<a id=aEncsavefile hidden><button>Lưu file đã mã hóa</button></a>
+			</div>
+
+			<p> </p>
+		</div>
+	</div> -->
+
+	<div class="container encrypt" id="divEncryptfile">
+		<div class="encrypt__title">
+			<h2>Mã hóa 1 file</h2>
+			<p>Để mã hóa 1 file, bạn phải nhập password và kéo file vào vùng. Sau đó lưu file đã mã hóa.</p>
+		</div>
+
+		<div class="encrypt__password">
+			<div class="password">
+				<div class="">Mật khẩu</div>
+				<div class=""><input id=txtEncpassphrase type=password size=30 onkeyup=javascript:encvalidate();
+						value=''></div>
+				<div class="">(Ít nhất 8 kí tự. Mật khẩu sẽ ok!)</div>
+			</div>
+			<div class="">Xác nhận</div>
+			<div class=""><input id=txtEncpassphraseretype type=password size=30 onkeyup=javascript:encvalidate();
+					value=''></div>
+			<div class=""><span class=greenspan id=spnCheckretype></span></div>
+		</div>
+
+		<p> </p>
+
+		<div class="inputEncrypt">
+			<div class=dropzone id="encdropzone" ondrop="drop_handler(event);" ondragover="dragover_handler(event);"
+				ondragend="dragend_handler(event);">
+				<p>Drag and drop the file to be encrypted into this dropzone, or click <a
+						onclick=javascript:encfileElem.click();>here</a> to select file.</p>
+				<p><span id=spnencfilename></span></p>
+			</div>
+			<input type="file" id="encfileElem" style="display:none" onchange="selectfile(this.files)">
+		</div>
+
+		<p> </p>
+
+		<div class="divTable">
+			<div class="divTableBody">
+				<div class="divTableRow">
+					<div class="divTableCell"><button id=btnEncrypt onclick=javascript:encryptfile(); disabled>Mã
+							hóa</button></div>
+					<div class="divTableCell"><span id=spnEncstatus></span></div>
+				</div>
+			</div>
+		</div>
+
+		<p> </p>
+
+		<div>
+			<a id=aEncsavefile hidden><button>Lưu file đã mã hóa</button></a>
+		</div>
+
+		<p> </p>
+	</div>
+
+	<div class="container" id=divDecryptfile>
+		<h2>Decrypt a File</h2>
+		<p>Decrypt a file using the password that was previously used to encrypt the file. After the file is decrypted,
+			you'll be given an opportunity to save the decrypted file to your system.</p>
+
+		<div class="divTable">
+			<div class="divTableBody">
+				<div class="divTableRow">
+					<div class="divTableCell">Password</div>
+					<div class="divTableCell"><input id=txtDecpassphrase type=password size=30
+							onkeyup=javascript:decvalidate(); value=''></div>
+				</div>
+			</div>
+		</div>
+
+		<p> </p>
+
+		<div>
+			<div class=dropzone id="decdropzone" ondrop="drop_handler(event);" ondragover="dragover_handler(event);"
+				ondragend="dragend_handler(event);">
+				<p>Drag and drop file to be decrypted into this dropzone, or click <a role=button
+						onclick=javascript:decfileElem.click();>here</a> to select file.</p>
+				<p><span id=spndecfilename></span></p>
+			</div>
+			<input type="file" id="decfileElem" style="display:none" onchange="selectfile(this.files)">
+		</div>
+
+		<p> </p>
+
+		<div class="divTable">
+			<div class="divTableBody">
+				<div class="divTableRow">
+					<div class="divTableCell"><button id=btnDecrypt onclick=javascript:decryptfile(); disabled>Decrypt
+							File</button></div>
+					<div class="divTableCell"><span id=spnDecstatus></span></div>
+				</div>
+			</div>
+		</div>
+
+		<p> </p>
+
+		<div>
+			<a id=aDecsavefile hidden><button>Save Decrypted File</button></a>
+		</div>
+
+		<p> </p>
+	</div>
+
+	<!-- <div class="container">
+			<hr>
+			<h3>Usage</h3>
+			<p>
+			Use this web page to encrypt a file using a password, then use the same password later to decrypt the file.  IMPORTANT:  The same password that was used to encrypt the file must be used to decrypt the file later. If you loose or forget the password, it cannot be recovered!
+			</p>
+
+			<h3>Operation and privacy</h3>
+			<p>			
+			This page uses javascript running within your web browser to encrypt and decrypt files client-side, in-browser. 
+			This page makes no network connections during this process, to ensure that your files and keys never leave the web browser during the process.
+			This can be independently verified by reviewing the source code for this page, or by monitoring your web browser's <a href=https://developer.mozilla.org/en-US/docs/Tools/Network_Monitor>networking activity</a> during operation of this page. 
+			This page can also be downloaded and run locally on your system offline.  
+			</p>
+
+			<h3>Cryptography</h3>
+			<p>
+			All client-side cryptography is implemented using the <a href='https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API'>Web Crypto API</a>.  
+			Files are encrypted using AES-CBC 256-bit symmetric encryption.  The encryption key is derived from the password and a random salt using PBKDF2 derivation with 10000 iterations of SHA256 hashing.
+			</p>	
+
+			<h3>Compatibility with openssl</h3>
+			<p>	
+			The encryption used by this page is compatible with <a href='https://www.openssl.org/docs/man1.1.1/man1/openssl-enc.html'>openssl</a>.<BR>
+			<BR>
+			Files encrypted using this page can be decrypted using openssl using the following command:<BR>
+			<span class='black10pointcourier'>openssl aes-256-cbc -d -salt -pbkdf2 -iter 10000 -in <i>encryptedfilename</i> -out <i>plaintextfilename</i></span><BR>
+			<BR>
+			Files encrypted using the following openssl command can be decrypted using this page:<BR>
+			<span class='black10pointcourier'>openssl aes-256-cbc -e -salt -pbkdf2 -iter 10000 -in <i>plaintextfilename</i> -out <i>encryptedfilename</i></span><BR>
+			</p>	
+
+			<h3>Running this page offline</h3>
+			<p>
+			This web page is self-contained. The page does not require any supporting files; all javascript and css for this page is contained in the source code of this page. 
+			To run this page locally on your system offline, simply save this page to your system as a .html file, then open the file from your system in your web browser (optionally with networking disabled). 			
+			</p>
+			
+			<h3>Verifying the integrity of this page</h3>
+			<p>
+			The expected SHA256 checksum hash of the .html file containing this page is posted at <a href=https://github.com/meixler/web-browser-based-file-encryption-decryption>https://github.com/meixler/web-browser-based-file-encryption-decryption</a>.
+			If loading this page from a web server, you can verify that the checksum hash of the .html file downloaded from the web server matches the expected checksum hash using the <a href=https://www.pageintegrity.net/>Page Integrity browser extension</a>.
+			If running this page offline, it is recommended that you verify that the checksum hash of the .html file matches the expected checksum hash before opening the file in your web browser.
+			</p>
+
+			<h3>License</h3>
+			<p>
+			This project is licensed under the <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GPL-3.0</a> open source license.
+			</p>
+
+			<h3>GitHub</h3>
+			<p>
+			This project can be found on GitHub at <a href=https://github.com/meixler/web-browser-based-file-encryption-decryption>https://github.com/meixler/web-browser-based-file-encryption-decryption</a>.
+			</p>
+			
+			<h3>Contact</h3>
+			<p>
+			Please <a href='https://www.meixler-tech.com/contact.php'>contact MTI</a> for any questions or comments concerning this project.
+			</p>
+
+		</div> -->
+	<BR>
+</body>
+
+</html>
+
+<script src="main.js"></script>
