@@ -21,9 +21,9 @@
 			<button id="btnDivEncrypt" onClick="javascript:switchdiv('encrypt');">Mã hóa 1 file</button>
 			<button id="btnDivDecrypt" onClick="javascript:switchdiv('decrypt');">Giải mã 1
 				file</button>
-			<button id="btnDivEncrypt" onClick="javascript:switchdiv('encrypt');">Mã hóa đoạn
+			<button id="show-encryption-form" onClick="javascript:switchdiv('encryptText');">Mã hóa đoạn
 				text</button>
-			<button id="btnDivDecrypt" onClick="javascript:switchdiv('decrypt');">Giải mã đoạn
+			<button id="show-decryption-form" onClick="javascript:switchdiv('decryptText');">Giải mã đoạn
 				text</button>
 		</div>
 	</div>
@@ -59,7 +59,7 @@
 		<hr>
 	</div>
 
-	<!-- <div class="container" id=divEncryptfile>
+	<div class="container" id=divEncryptfile>
 		<div class="encryptDiv">
 			<h2>Mã hóa 1 file</h2>
 			<p>Để mã hóa 1 file, bạn phải nhập password và kéo file vào vùng. Sau đó lưu file đã mã hóa.</p>
@@ -113,60 +113,7 @@
 
 			<p> </p>
 		</div>
-	</div> -->
-
-	<div class="container encrypt" id="divEncryptfile">
-		<div class="encrypt__title">
-			<h2>Mã hóa 1 file</h2>
-			<p>Để mã hóa 1 file, bạn phải nhập password và kéo file vào vùng. Sau đó lưu file đã mã hóa.</p>
-		</div>
-
-		<div class="encrypt__password">
-			<div class="password">
-				<div class="">Mật khẩu</div>
-				<div class=""><input id=txtEncpassphrase type=password size=30 onkeyup=javascript:encvalidate();
-						value=''></div>
-				<div class="">(Ít nhất 8 kí tự. Mật khẩu sẽ ok!)</div>
-			</div>
-			<div class="">Xác nhận</div>
-			<div class=""><input id=txtEncpassphraseretype type=password size=30 onkeyup=javascript:encvalidate();
-					value=''></div>
-			<div class=""><span class=greenspan id=spnCheckretype></span></div>
-		</div>
-
-		<p> </p>
-
-		<div class="inputEncrypt">
-			<div class=dropzone id="encdropzone" ondrop="drop_handler(event);" ondragover="dragover_handler(event);"
-				ondragend="dragend_handler(event);">
-				<p>Drag and drop the file to be encrypted into this dropzone, or click <a
-						onclick=javascript:encfileElem.click();>here</a> to select file.</p>
-				<p><span id=spnencfilename></span></p>
-			</div>
-			<input type="file" id="encfileElem" style="display:none" onchange="selectfile(this.files)">
-		</div>
-
-		<p> </p>
-
-		<div class="divTable">
-			<div class="divTableBody">
-				<div class="divTableRow">
-					<div class="divTableCell"><button id=btnEncrypt onclick=javascript:encryptfile(); disabled>Mã
-							hóa</button></div>
-					<div class="divTableCell"><span id=spnEncstatus></span></div>
-				</div>
-			</div>
-		</div>
-
-		<p> </p>
-
-		<div>
-			<a id=aEncsavefile hidden><button>Lưu file đã mã hóa</button></a>
-		</div>
-
-		<p> </p>
 	</div>
-
 	<div class="container" id=divDecryptfile>
 		<h2>Decrypt a File</h2>
 		<p>Decrypt a file using the password that was previously used to encrypt the file. After the file is decrypted,
@@ -213,6 +160,57 @@
 		</div>
 
 		<p> </p>
+	</div>
+	<div id="container">
+		<!-- <div id="buttons-group-wrapper">
+			<div class="button-wrapper-large">
+				<button id="show-encryption-form">Encrypt</button>
+			</div>
+			<div class="button-wrapper-large">
+				<button id="show-decryption-form">Decrypt</button>
+			</div>
+		</div> -->
+		<div id="encryption-form-wrapper">
+			<form id="encryption-form">
+				<div class="textarea-wrapper">
+					<label for="plaintext">Plaintext</label>
+					<textarea id="plaintext" cols="60" rows="5"></textarea>
+				</div>
+				<div class="input-wrapper">
+					<label for="encryption-password">Password</label>
+					<input type="password" id="encryption-password" required>
+				</div>
+				<div id="button-wrapper">
+					<button id="encrypt-button">Encrypt</button>
+				</div>
+			</form>
+		</div>
+		<div id="decryption-form-wrapper">
+			<form id="decryption-form">
+				<div class="textarea-wrapper">
+					<label for="ciphertext">Ciphertext</label>
+					<textarea id="ciphertext" cols="60" rows="5" required></textarea>
+				</div>
+				<div class="content-type-wrapper">
+					<label for="content-type">Select Content Type</label>
+					<select id="content-type">
+						<option value="text" selected>Text</option>
+						<option value="json">JSON</option>
+					</select>
+				</div>
+				<div class="input-wrapper">
+					<label for="decryption-password">Password</label>
+					<input type="password" id="decryption-password" required>
+				</div>
+				<div id="button-wrapper">
+					<button id="decrypt-button">Decrypt</button>
+				</div>
+			</form>
+		</div>
+		<div id="output-container-wrapper">
+			<label for="output-container" id="output-container-label"></label>
+			<textarea id="output-container" cols="60" rows="10" readonly></textarea>
+		</div>
 	</div>
 
 	<!-- <div class="container">
